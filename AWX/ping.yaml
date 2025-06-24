@@ -1,1 +1,7 @@
-
+---
+- name: Ping AWX Gitistä
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ping
+      ansible.builtin.ping:
