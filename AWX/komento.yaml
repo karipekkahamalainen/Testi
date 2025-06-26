@@ -1,0 +1,12 @@
+---
+- name: Suorita komentoa
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Listaa /tmp-kansion sisältö
+      ansible.builtin.shell: ls -l /tmp
+      register: tulos
+
+    - name: Näytä komennon tulos
+      ansible.builtin.debug:
+        var: tulos.stdout_lines
