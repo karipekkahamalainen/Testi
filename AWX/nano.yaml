@@ -1,0 +1,11 @@
+---
+- name: Asenna nano tekstieditori
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Asenna nano
+      apt:
+        name: nano
+        state: present
+        update_cache: yes
