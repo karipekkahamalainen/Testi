@@ -9,3 +9,12 @@
         name: nano
         state: present
         update_cache: yes
+
+    - name: Tarkista onko nano jo asennettu
+      shell: which nano
+      register: nano_path
+      ignore_errors: yes
+
+    - name: Tulosta polku
+      debug:
+        msg: "Nano löytyy polusta: {{ nano_path.stdout }}"
