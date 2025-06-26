@@ -1,7 +1,11 @@
 ---
 - name: Ping AWX Gitistä
-  hosts: all
+  hosts: localhost
   gather_facts: false
   tasks:
-    - name: Ping
+    - name: Ping localhost
       ansible.builtin.ping:
+
+    - name: Tulosta viesti
+      ansible.builtin.debug:
+        msg: "Playbook suoritettiin onnistuneesti!"
