@@ -1,6 +1,6 @@
 ---
 - name: Asenna nano tekstieditori
-  hosts: all
+  hosts: 172.30.133.140
   become: true
 
   tasks:
