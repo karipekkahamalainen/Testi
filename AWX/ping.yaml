@@ -1,5 +1,5 @@
 ---
-- name: Ping AWX Gitistä
+- name: Ping AWX Gitistä tehtava1(muokattu)
   hosts: localhost
   gather_facts: false
   tasks:
