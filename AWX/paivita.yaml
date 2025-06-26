@@ -1,0 +1,14 @@
+---
+- name: Päivitä Ubuntu-järjestelmä
+  hosts: all
+  become: true
+  tasks:
+    - name: Päivitä pakettitietokanta (apt update)
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Asenna kaikki päivitykset (apt upgrade)
+      ansible.builtin.apt:
+        upgrade: dist
+        autoremove: yes
+        autoclean: yes
