@@ -15,6 +15,7 @@
       register: nano_path
       ignore_errors: yes
 
-    - name: Tulosta polku
+    - name: Vahvista että nano on asennettu
       debug:
-        msg: "Nano löytyy polusta: {{ nano_path.stdout }}"
+        msg: "Nano on asennettu onnistuneesti"
+      when: nano_path.rc == 0
