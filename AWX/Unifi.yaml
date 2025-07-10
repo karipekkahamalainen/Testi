@@ -1,12 +1,12 @@
 ---
-- name: Testaa Unifi-laitteen tila
+- name: Näytä Unifi-kytkimen info
   hosts: 172.30.133.134
-  gather_facts: false
+  gather_facts: no
   tasks:
-    - name: Aja mca-status
-      raw: mca-status
-      register: status_output
+    - name: Aja info-komento
+      raw: info
+      register: info_output
 
-    - name: Tulosta laitteen tila
+    - name: Tulosta info-tuloste
       debug:
-        msg: "{{ status_output.stdout_lines }}"
+        msg: "{{ info_output.stdout_lines }}"
