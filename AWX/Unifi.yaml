@@ -1,5 +1,5 @@
 - name: Unifi-laitteen WLAN-tarkistus
-  hosts: unifi
+  hosts: 172.30.133.134
   gather_facts: no
   vars:
     config_path: /tmp/system.cfg
