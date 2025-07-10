@@ -1,12 +1,12 @@
 ---
-- name: Näytä Unifi-kytkimen info
+- name: Näytä Unifi-kytkimen info CLI:n kautta
   hosts: 172.30.133.134
   gather_facts: no
   tasks:
-    - name: Aja info-komento
-      raw: info
+    - name: Aja CLI info
+      raw: /bin/cli -c 'info'
       register: info_output
 
-    - name: Tulosta info-tuloste
+    - name: Tulosta info
       debug:
         msg: "{{ info_output.stdout_lines }}"
