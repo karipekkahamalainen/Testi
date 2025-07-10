@@ -1,0 +1,6 @@
+- name: Unifi: Tarkista laitteen tila ja WLAN-info
+  hosts: unifi
+  gather_facts: no
+  tasks:
+    - name: Suorita mca-status-komento
+      raw: mca-status
