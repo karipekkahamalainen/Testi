@@ -1,3 +1,4 @@
+---
 - name: Testaa Unifi show info
   hosts: 172.30.133.134
   gather_facts: false
