@@ -1,22 +1,11 @@
-- name: Unifi-laitteen WLAN-tarkistus
+- name: Testaa Unifi-laite: show info
   hosts: 172.30.133.134
   gather_facts: no
-  vars:
-    config_path: /tmp/system.cfg
   tasks:
+    - name: Aja show info
+      raw: show info
+      register: show_info_output
 
-    - name: Näytä WLAN-konfiguraatio (system.cfg)
-      raw: cat {{ config_path }} | grep -i wifi
-      register: wifi_config
-
-    - name: Tulosta WLAN-konfiguraatio
+    - name: Tulosta show info -tulokset
       debug:
-        msg: "{{ wifi_config.stdout_lines }}"
-
-    - name: Näytä laitteen tila (mca-status)
-      raw: mca-status
-      register: mca_info
-
-    - name: Tulosta laitteen tila
-      debug:
-        msg: "{{ mca_info.stdout_lines }}"
+        msg: "{{ show_info_output.stdout_lines }}"
