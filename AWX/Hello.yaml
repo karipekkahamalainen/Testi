@@ -1,0 +1,6 @@
+- name: Hello world
+  hosts: 127.0.0.1
+  gather_facts: false
+  tasks:
+    - name: Ping
+      ping:
