@@ -1,12 +1,21 @@
 ---
-- name: Näytä Unifi-kytkimen info CLI:n kautta
+- name: Unifi-kytkimen perustiedot
   hosts: 172.30.133.134
-  gather_facts: no
+  gather_facts: false
   tasks:
-    - name: Aja CLI info
-      raw: /bin/cli -c 'info'
-      register: info_output
 
-    - name: Tulosta info
+    - name: Lue laitetiedot (board.info)
+      raw: cat /etc/board.info
+      register: board_info
+
+    - name: Tulosta laitetiedot
       debug:
-        msg: "{{ info_output.stdout_lines }}"
+        msg: "{{ board_info.stdout_lines }}"
+
+    - name: Lue ohjelmistoversio
+      raw: cat /etc/version
+      register: version_info
+
+    - name: Tulosta versiotiedot
+      debug:
+        msg: "{{ version_info.stdout_lines }}"
