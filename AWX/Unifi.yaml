@@ -1,6 +1,22 @@
-- name: Unifi: Tarkista laitteen tila ja WLAN-info
+- name: Unifi-laitteen WLAN-tarkistus
   hosts: unifi
   gather_facts: no
+  vars:
+    config_path: /tmp/system.cfg
   tasks:
-    - name: Suorita mca-status-komento
+
+    - name: Näytä WLAN-konfiguraatio (system.cfg)
+      raw: cat {{ config_path }} | grep -i wifi
+      register: wifi_config
+
+    - name: Tulosta WLAN-konfiguraatio
+      debug:
+        msg: "{{ wifi_config.stdout_lines }}"
+
+    - name: Näytä laitteen tila (mca-status)
       raw: mca-status
+      register: mca_info
+
+    - name: Tulosta laitteen tila
+      debug:
+        msg: "{{ mca_info.stdout_lines }}"
