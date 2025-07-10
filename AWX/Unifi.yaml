@@ -1,12 +1,12 @@
 ---
-- name: Testaa Unifi show info
+- name: Testaa Unifi-laitteen tila
   hosts: 172.30.133.134
   gather_facts: false
   tasks:
-    - name: Aja show info
-      raw: show info
-      register: show_output
+    - name: Aja mca-status
+      raw: mca-status
+      register: status_output
 
-    - name: Tulosta tulos
+    - name: Tulosta laitteen tila
       debug:
-        msg: "{{ show_output.stdout_lines }}"
+        msg: "{{ status_output.stdout_lines }}"
