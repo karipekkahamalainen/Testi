@@ -1,6 +1,6 @@
 ---
 - name: Unifi-kytkimen perustiedot
-  hosts: 172.30.133.134
+  hosts: 10.1.0.60
   gather_facts: false
   tasks:
 
